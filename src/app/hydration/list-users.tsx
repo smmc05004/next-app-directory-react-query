@@ -3,11 +3,17 @@
 import { User } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import axios from "axios";
 
 async function getUsers() {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const users = (await res.json()) as User[];
   return users;
+}
+
+async function getTests() {
+  const res = (await axios("http://localhost:3000/api/hello")).data;
+  return res as any;
 }
 
 export default function ListUsers() {
@@ -18,8 +24,15 @@ export default function ListUsers() {
     queryFn: () => getUsers(),
   });
 
+  const { data: testData } = useQuery({
+    queryKey: ["hydrate-test"],
+    queryFn: () => getTests(),
+  });
+
   return (
     <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
+      {testData && <div> {testData.name}</div>}
+
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
         <h4 style={{ marginBottom: 16 }}>{count}</h4>
         <button onClick={() => setCount((prev) => prev + 1)}>increment</button>
