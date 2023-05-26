@@ -34,8 +34,8 @@ const List = () => {
   return (
     <>
       <ul>
-        {data?.pages.map((page) =>
-          page.results.map((poke: any) => (
+        {data?.pages?.map((page) =>
+          page?.results.map((poke: any) => (
             <li key={poke.name} style={{ padding: "20px", fontWeight: "bold" }}>
               {poke.name}
             </li>
