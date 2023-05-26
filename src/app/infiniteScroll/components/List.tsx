@@ -3,7 +3,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useRef } from "react";
 import useIntersectionObserver from "../hooks/useIntersectionObserver";
-import { getPoke } from "../api.ts";
+import { getPoke } from "../api";
 
 const List = () => {
   const loadMoreButtonRef = useRef<HTMLDivElement>(null);

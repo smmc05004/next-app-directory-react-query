@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { getPoke } from "./api.ts";
+import { getPoke } from "./api/index";
 import getQueryClient from "../utils/getQueryClient";
 import { dehydrate } from "@tanstack/react-query";
 import Hydrate from "../utils/hydrate.client";
